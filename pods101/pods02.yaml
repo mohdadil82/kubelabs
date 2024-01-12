@@ -33,9 +33,9 @@ spec:
           limits:
             memory: "500Mi"
             cpu: "200m"
-      - name: install-stress
-        image: busybox:latest
-        command: ["/bin/sh", "-c", "apk --no-cache add stress"]
+      - name: stress
+        image: progrium/stress
+        command: ["/stress", "--cpu", "2", "--timeout", "600s"]
 
       restartPolicy: Always
 ---
