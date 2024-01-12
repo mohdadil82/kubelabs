@@ -8,11 +8,11 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: hpa-demo-deployment
   labels:
     app: nginx
 spec:
-  #replicas: 4
+  #replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -23,24 +23,31 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: stacksimplify/kubenginx:1.0.0
         ports:
         - containerPort: 80
-
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "500Mi"
+            cpu: "200m"          
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: hpa-demo-service-nginx
   labels:
     app: nginx
 spec:
-  ports:
-  - port: 80
-    nodePort: 30002
+  type: NodePort
   selector:
     app: nginx
-  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 3123
 
 
 ---
@@ -48,6 +55,8 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: nginx
+  #labels:
+  #  app: nginx
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
