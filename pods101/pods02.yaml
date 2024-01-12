@@ -35,7 +35,6 @@ spec:
             cpu: "200m"
       - name: stress
         image: progrium/stress
-        command: ["/stress", "--cpu", "2", "--timeout", "600s"]
 
       restartPolicy: Always
 ---
