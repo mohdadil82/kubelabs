@@ -25,7 +25,7 @@ spec:
       containers:
       - name: stress-container
         image: progrium/stress
-        args: ["--cpu", "2", "--timeout", "600s"]
+        #args: ["--cpu", "2", "--timeout", "600s"]
         resources:
           requests:
             cpu: "100m"
