@@ -33,10 +33,9 @@ spec:
           limits:
             memory: "500Mi"
             cpu: "200m"
-      - name: stress
-        image: progrium/stress
-
-      restartPolicy: Always
+      - name: wrk-container
+        image: williamyeh/wrk:latest
+        command: ["/bin/sh", "-c", "sleep 3600"]
 ---
 apiVersion: v1
 kind: Service
