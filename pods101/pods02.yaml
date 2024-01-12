@@ -37,7 +37,7 @@ spec:
         image: busybox:latest
         command: ["/bin/sh", "-c", "apk --no-cache add stress"]
 
-      restartPolicy: Always]
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
