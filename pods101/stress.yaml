@@ -31,6 +31,8 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: stress-hpa
+  labels:
+        app: stress
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
