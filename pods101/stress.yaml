@@ -27,7 +27,7 @@ spec:
         image: progrium/stress
         args: ["--cpu", "2", "--timeout", "600s"]
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: stress-hpa
