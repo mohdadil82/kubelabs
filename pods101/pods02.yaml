@@ -18,7 +18,7 @@ spec:
 
 
 ---
-apiVersion: autoscaling/v2
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: nginx
@@ -36,15 +36,4 @@ spec:
       target:
         type: Utilization
         averageUtilization: 30
-status:
-  observedGeneration: 1
-  lastScaleTime: 2
-  currentReplicas: 1
-  desiredReplicas: 1
-  currentMetrics:
-  - type: Resource
-    resource:
-      name: cpu
-      current:
-        averageUtilization: 0
-        averageValue: 0
+
