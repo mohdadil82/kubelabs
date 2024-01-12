@@ -33,9 +33,11 @@ spec:
           limits:
             memory: "500Mi"
             cpu: "200m"
-      - name: memory-demo-ctr
-        image: polinux/stress
-        command: ["stress", "--cpu", "2", "--io", "1", "--vm", "1", "--vm-bytes", "128M", "--timeout", "60s"]
+      - name: install-stress
+        image: busybox:latest
+        command: ["/bin/sh", "-c", "apk --no-cache add stress"]
+
+      restartPolicy: Always]
 ---
 apiVersion: v1
 kind: Service
