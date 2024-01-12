@@ -59,4 +59,4 @@ spec:
     name: stress-deployment
   minReplicas: 1
   maxReplicas: 3
-  targetCPUUtilizationPercentage: 10
+  targetCPUUtilizationPercentage: 80
