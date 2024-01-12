@@ -8,7 +8,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hpa-demo-deployment
+  name: nginx
   labels:
     app: nginx
 spec:
