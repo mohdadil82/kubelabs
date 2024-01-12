@@ -26,22 +26,19 @@ spec:
       - name: stress-container
         image: progrium/stress
         args: ["--cpu", "2", "--timeout", "600s"]
+
 ---
-apiVersion: autoscaling/v2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: stress-hpa
   labels:
-        app: stress
+    app: stress
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: stress-deployment
   minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: 20
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 10
