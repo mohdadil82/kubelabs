@@ -33,8 +33,8 @@ spec:
           limits:
             memory: "500Mi"
             cpu: "200m"
-     - name: memory-demo-ctr
-       image: polinux/stress
+      - name: memory-demo-ctr
+        image: polinux/stress
 ---
 apiVersion: v1
 kind: Service
