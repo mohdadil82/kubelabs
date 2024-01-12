@@ -28,6 +28,21 @@ spec:
         args: ["--cpu", "2", "--timeout", "600s"]
 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stress-service
+  namespace: stress
+spec:
+  selector:
+    app: stress
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
